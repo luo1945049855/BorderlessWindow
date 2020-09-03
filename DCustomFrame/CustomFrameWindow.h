@@ -260,7 +260,6 @@ private:
             {
                 CRect rect_work, rect_monitor;
                 MonitorRectFromWindow(SelfWnd(), rect_work, rect_monitor);
-                rect_work.OffsetRect(-rect_monitor.left, -rect_monitor.top);
                 rect_window = rect_work;
             }
 
