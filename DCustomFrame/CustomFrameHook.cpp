@@ -23,10 +23,11 @@ namespace
 	static DWORD												g_main_thread_id = 0;
 	static boost::thread_specific_ptr<HHOOK__>					g_thread_hhook(UninstallThreadHHook);
 
-	/// <summary>	g_hwnd_handlers is created in WM_CREATE and destroyed in WM_DESTROY.
-	/// 			it shouble be thread safe because of the relationship 
-	/// 			between main hwnd(main thread) and sub windows(main/sub thread)
-
+    // g_hwnd_handlers
+    // add: main thread
+    // remove: main thread
+    // use: main/sub thread
+    // So remove in OnFinalMessage should be safe enough.
 	static HWNDToHandlerMapT									g_hwnd_handlers;
 	static CCustomFrameWndHandlerPtr							g_primary_handler;
 	static SubThreadMsgFilterContainerT							g_sub_thread_filter;

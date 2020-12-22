@@ -176,7 +176,6 @@ private:
     LRESULT OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled)
     {
         m_frame_handler.reset();
-        CCustomFrameHook::RemoveTopWndHandler(SelfWnd());
         return FALSE;
     }
 
@@ -373,6 +372,11 @@ private:
     }
 
 protected:
+    void OnFinalMessage(HWND hWnd)
+    {
+        CCustomFrameHook::RemoveTopWndHandler(hWnd);
+    }
+
     inline CRect GetCustomCaptionRect() { return m_custom_caption_rect; }
     inline CRect GetCustomClientRect() { return m_custom_client_rect; }
 

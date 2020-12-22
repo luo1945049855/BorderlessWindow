@@ -107,9 +107,9 @@ LRESULT CMainFrame::OnCrossThreadMsg(UINT uMsg, WPARAM wParam, LPARAM lParam, BO
 	return FALSE;
 }
 
-void CMainFrame::OnFinalMessage(_In_ HWND /*hWnd*/)
+void CMainFrame::OnFinalMessage(_In_ HWND hWnd)
 {
-
+    CCustomFrameWindow::OnFinalMessage(hWnd);
 }
 
 void CMainFrame::UpdateLayout()
